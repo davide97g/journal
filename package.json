@@ -1,7 +1,7 @@
 {
   "name": "journal",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port 8080",
@@ -21,6 +21,7 @@
     "typescript": "^5.0.2",
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.5",
+    "vite-plugin-pwa": "^0.16.4",
     "vue-tsc": "^1.8.5"
   }
 }
