@@ -14,7 +14,7 @@
       </a-col>
       <a-col :span="24">
         <img
-          src="favicon.svg"
+          src="/favicon.svg"
           style="
             width: 4rem;
             height: 4rem;
