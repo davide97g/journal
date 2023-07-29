@@ -7,8 +7,6 @@
       justify-content: space-between;
     "
   >
-    {{ route.params.date }}
-    {{ new Date(route.params.date as string).toLocaleDateString() }}
     <a-typography-title :level="5"
       >New Journal for {{ date }}</a-typography-title
     >
@@ -55,7 +53,7 @@ const route = useRoute();
 
 const date = computed(() => {
   const paramsDate = route.params.date as string;
-  return (paramsDate ? dayjs(new Date(paramsDate)) : dayjs()).format(
+  return (paramsDate ? dayjs(paramsDate, "MM-DD-YYYY") : dayjs()).format(
     "MM-DD-YYYY"
   );
 });

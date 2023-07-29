@@ -72,7 +72,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const date = computed(() => {
   const paramsDate = route.params.date as string;
-  return (paramsDate ? dayjs(new Date(paramsDate)) : dayjs()).format(
+  return (paramsDate ? dayjs(paramsDate, "MM-DD-YYYY") : dayjs()).format(
     "MM-DD-YYYY"
   );
 });
