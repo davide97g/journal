@@ -87,7 +87,6 @@ const update = () => {
 };
 
 const goToNewEntry = () => {
-  console.info(date.format("MM-DD-YYYY"));
   router.push({ name: "New", params: { date: date.format("MM-DD-YYYY") } });
 };
 
