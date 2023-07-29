@@ -27,8 +27,6 @@
       justify-content: space-between;
     "
   >
-    {{ new Date(entry.date).toLocaleDateString() }}
-    {{ dayjs().format("MM-DD-YYYY") }}
     <a-typography-title :level="5"
       >Edit Journal for
       {{ dayjs(entry.date).format("MM-DD-YYYY") }}</a-typography-title
@@ -63,7 +61,7 @@
 
 <script setup lang="ts">
 import { Button } from "ant-design-vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import dayjs from "dayjs";
 import { isLoading } from "../utils";
 import { JournalService } from "../services/journal";
@@ -72,14 +70,14 @@ import { router } from "../router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const date = dayjs((route.params.date as string) || dayjs()).format(
-  "MM-DD-YYYY"
-);
+const date = computed(() => {
+  return dayjs((route.params.date as string) || dayjs()).format("MM-DD-YYYY");
+});
 
 const entry = ref<JournalEntry | null>(null);
 
 const getEntry = () =>
-  JournalService.getEntry(date).then((data) => (entry.value = data));
+  JournalService.getEntry(date.value).then((data) => (entry.value = data));
 
 const update = () => {
   if (!entry.value) return;
@@ -89,7 +87,7 @@ const update = () => {
 };
 
 const goToNewEntry = () => {
-  router.push({ name: "New", params: { date: date } });
+  router.push({ name: "New", params: { date: date.value } });
 };
 
 getEntry();
