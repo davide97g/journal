@@ -70,7 +70,7 @@ import { router } from "../router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const date = dayjs((route.params.date as string) || new Date());
+const date = dayjs((route.params.date as string) || dayjs());
 
 const entry = ref<JournalEntry | null>(null);
 
