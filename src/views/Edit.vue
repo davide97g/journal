@@ -71,7 +71,10 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const date = computed(() => {
-  return dayjs((route.params.date as string) || dayjs()).format("MM-DD-YYYY");
+  const paramsDate = route.params.date as string;
+  return (paramsDate ? dayjs(new Date(paramsDate)) : dayjs()).format(
+    "MM-DD-YYYY"
+  );
 });
 
 const entry = ref<JournalEntry | null>(null);
