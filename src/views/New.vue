@@ -7,11 +7,14 @@
       justify-content: space-between;
     "
   >
+    {{ route.params.date }}
+    {{ new Date(route.params.date as string).toLocaleDateString() }}
     <a-typography-title :level="5"
       >New Journal for {{ date }}</a-typography-title
     >
     <a-row>
-      <a-col :span="24">
+      <a-col :span="24" style="text-align: left">
+        <a-typography-paragraph>Journal</a-typography-paragraph>
         <a-textarea
           v-model:value="note"
           :rows="10"
@@ -21,6 +24,7 @@
     </a-row>
     <a-row>
       <a-col :span="24">
+        <a-typography-paragraph>Rating</a-typography-paragraph>
         <a-rate v-model:value="rate" allow-half />
       </a-col>
     </a-row>
