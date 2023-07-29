@@ -8,7 +8,7 @@
     "
   >
     <a-typography-title :level="5"
-      >New Journal for {{ date.format("MM-DD-YYYY") }}</a-typography-title
+      >New Journal for {{ date }}</a-typography-title
     >
     <a-row>
       <a-col :span="24">
@@ -48,7 +48,9 @@ import { router } from "../router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const date = dayjs((route.params.date as string) || dayjs());
+const date = dayjs((route.params.date as string) || dayjs()).format(
+  "MM-DD-YYYY"
+);
 
 const note = ref("");
 const rate = ref(0);
@@ -56,7 +58,7 @@ const rate = ref(0);
 const save = () => {
   JournalService.createNewEntry({
     entry: note.value,
-    date: date.format("MM-DD-YYYY"),
+    date,
     rating: rate.value,
   }).then(() => {
     router.push({ name: "Home" });

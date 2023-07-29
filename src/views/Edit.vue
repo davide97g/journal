@@ -70,14 +70,14 @@ import { router } from "../router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const date = dayjs((route.params.date as string) || dayjs());
+const date = dayjs((route.params.date as string) || dayjs()).format(
+  "MM-DD-YYYY"
+);
 
 const entry = ref<JournalEntry | null>(null);
 
 const getEntry = () =>
-  JournalService.getEntry(date.format("MM-DD-YYYY")).then(
-    (data) => (entry.value = data)
-  );
+  JournalService.getEntry(date).then((data) => (entry.value = data));
 
 const update = () => {
   if (!entry.value) return;
@@ -87,7 +87,7 @@ const update = () => {
 };
 
 const goToNewEntry = () => {
-  router.push({ name: "New", params: { date: date.format("MM-DD-YYYY") } });
+  router.push({ name: "New", params: { date: date } });
 };
 
 getEntry();
