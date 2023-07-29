@@ -41,7 +41,8 @@ const getEntries = () => {
 const getEntriesForDate = (date: Dayjs) => {
   return entries.value.filter(
     (entry) =>
-      dayjs(entry.date).format("MM-DD-YYYY") === date.format("MM-DD-YYYY")
+      dayjs(entry.date, "MM-DD-YYYY").format("MM-DD-YYYY") ===
+      date.format("MM-DD-YYYY")
   );
 };
 

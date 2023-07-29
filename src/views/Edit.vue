@@ -29,7 +29,9 @@
   >
     <a-typography-title :level="5"
       >Edit Journal for
-      {{ dayjs(entry.date).format("MM-DD-YYYY") }}</a-typography-title
+      {{
+        dayjs(entry.date, "MM-DD-YYYY").format("MM-DD-YYYY")
+      }}</a-typography-title
     >
     <a-row>
       <a-col :span="24">
