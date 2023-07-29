@@ -27,6 +27,8 @@
       justify-content: space-between;
     "
   >
+    {{ new Date(entry.date).toLocaleDateString() }}
+    {{ dayjs().format("MM-DD-YYYY") }}
     <a-typography-title :level="5"
       >Edit Journal for
       {{ dayjs(entry.date).format("MM-DD-YYYY") }}</a-typography-title

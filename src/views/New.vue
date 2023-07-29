@@ -7,6 +7,8 @@
       justify-content: space-between;
     "
   >
+    {{ new Date().toLocaleDateString() }}
+    {{ dayjs().format("MM-DD-YYYY") }}
     <a-typography-title :level="5"
       >New Journal for {{ date }}</a-typography-title
     >
